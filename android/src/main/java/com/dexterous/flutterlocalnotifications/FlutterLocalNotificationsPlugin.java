@@ -275,7 +275,9 @@ public class FlutterLocalNotificationsPlugin
       setupNotificationChannel(context, notificationChannelDetails);
     }
     Intent intent = getLaunchIntent(context);
-    intent.setAction(SELECT_NOTIFICATION);
+    // intent.setAction(SELECT_NOTIFICATION);
+    intent.setAction("android.intent.action.MAIN");
+    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
     intent.putExtra(NOTIFICATION_ID, notificationDetails.id);
     intent.putExtra(PAYLOAD, notificationDetails.payload);
     int flags = PendingIntent.FLAG_UPDATE_CURRENT;
